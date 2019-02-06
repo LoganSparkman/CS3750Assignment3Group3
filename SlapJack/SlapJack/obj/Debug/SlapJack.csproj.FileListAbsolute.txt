@@ -1,0 +1,15 @@
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\bin\Debug\SlapJack.exe.config
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\bin\Debug\SlapJack.exe
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\bin\Debug\SlapJack.pdb
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.csprojAssemblyReference.cache
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\MainWindow.g.cs
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\App.g.cs
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack_MarkupCompile.cache
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack_MarkupCompile.lref
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\MainWindow.baml
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.g.resources
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.Properties.Resources.resources
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.csproj.GenerateResource.cache
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.csproj.CoreCompileInputs.cache
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.exe
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.pdb
