@@ -8,35 +8,38 @@ namespace SlapJack
 {
     class Player
     {
+        /// <summary>
+        /// cards player has
+        /// </summary>
+        Hand hand;
 
-        private bool hasSelectedCard;
-        private int column;
-
+        /// <summary>
+        /// number of cards player has
+        /// </summary>
+        int numCards;
 
         public Player()
         {
-            hasSelectedCard = false;
-            column = 0;
+            hand = new Hand();
         }
 
-        public void pickCard()
+        /// <summary>
+        /// calculates the number of cards player has
+        /// </summary>
+        /*
+        public void GetNumCards()
         {
-            hasSelectedCard = true;
-        }
+            numCards = 0;
 
-        public void indicateColumn(int column)
-        {
-            this.column = column;
+            foreach(Card card in hand)
+            {
+                if (card != null)
+                    numCards++;
+            }
         }
+        */
 
-        public bool getHasSelectedCard()
-        {
-            return hasSelectedCard;
-        }
 
-        public int getColumn()
-        {
-            return column;
-        }
+
     }
 }
