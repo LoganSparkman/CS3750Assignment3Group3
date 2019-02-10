@@ -11,16 +11,22 @@ namespace SlapJack
         /// <summary>
         /// cards player has
         /// </summary>
-        Hand hand;
+        //Hand hand;
 
         /// <summary>
-        /// number of cards player has
+        /// Did the player slap first?
         /// </summary>
-        int numCards;
+        private bool slapped = false;
+
+        public bool slappedFirst
+        {
+            get { return slapped; }
+            set { slapped = value; }
+        }
 
         public Player()
         {
-            hand = new Hand();
+           // hand = new Hand();
         }
 
         /// <summary>
