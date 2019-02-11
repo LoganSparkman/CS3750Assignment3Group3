@@ -37,7 +37,7 @@ namespace SlapJack
         {
             InitializeComponent();
             player = new Player();
-            computer = new Computer();
+            //computer = new Computer();
 
             //computer thread
             computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);

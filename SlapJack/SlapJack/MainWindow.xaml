@@ -6,10 +6,25 @@
         xmlns:local="clr-namespace:SlapJack"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <Window.Background>
+        <ImageBrush ImageSource="Images\background.jpg" />
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="551*"/>
             <ColumnDefinition Width="241*"/>
         </Grid.ColumnDefinitions>
+        <Button Content="START" HorizontalAlignment="Left" Margin="33,33,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Left" Height="141" Margin="465,105,0,0" VerticalAlignment="Top" Width="208" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
