@@ -40,8 +40,8 @@ namespace SlapJack
             //computer = new Computer();
 
             //computer thread
-            computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
-            computerSlapWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(slapped);
+            //computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
+            //computerSlapWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(slapped);
         }
 
         /// <summary>

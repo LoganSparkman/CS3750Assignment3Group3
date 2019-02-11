@@ -99,5 +99,63 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="image\10C.jpg" />
+    <Resource Include="image\10D.jpg" />
+    <Resource Include="image\10H.jpg" />
+    <Resource Include="image\10S.jpg" />
+    <Resource Include="image\2C.jpg" />
+    <Resource Include="image\2D.jpg" />
+    <Resource Include="image\2H.jpg" />
+    <Resource Include="image\2S.jpg" />
+    <Resource Include="image\3C.jpg" />
+    <Resource Include="image\3D.jpg" />
+    <Resource Include="image\3H.jpg" />
+    <Resource Include="image\3S.jpg" />
+    <Resource Include="image\4C.jpg" />
+    <Resource Include="image\4D.jpg" />
+    <Resource Include="image\4H.jpg" />
+    <Resource Include="image\4S.jpg" />
+    <Resource Include="image\5C.jpg" />
+    <Resource Include="image\5D.jpg" />
+    <Resource Include="image\5H.jpg" />
+    <Resource Include="image\5S.jpg" />
+    <Resource Include="image\6C.jpg" />
+    <Resource Include="image\6D.jpg" />
+    <Resource Include="image\6H.jpg" />
+    <Resource Include="image\6S.jpg" />
+    <Resource Include="image\7C.jpg" />
+    <Resource Include="image\7D.jpg" />
+    <Resource Include="image\7H.jpg" />
+    <Resource Include="image\7S.jpg" />
+    <Resource Include="image\8C.jpg" />
+    <Resource Include="image\8D.jpg" />
+    <Resource Include="image\8H.jpg" />
+    <Resource Include="image\8S.jpg" />
+    <Resource Include="image\9C.jpg" />
+    <Resource Include="image\9D.jpg" />
+    <Resource Include="image\9H.jpg" />
+    <Resource Include="image\9S.jpg" />
+    <Resource Include="image\AC.jpg" />
+    <Resource Include="image\AD.jpg" />
+    <Resource Include="image\AH.jpg" />
+    <Resource Include="image\AS.jpg" />
+    <Resource Include="image\backG.jpg" />
+    <Resource Include="image\background.jpg" />
+    <Resource Include="image\JC.jpg" />
+    <Resource Include="image\JD.jpg" />
+    <Resource Include="image\JH.jpg" />
+    <Resource Include="image\JS.jpg" />
+    <Resource Include="image\KC.jpg" />
+    <Resource Include="image\KD.jpg" />
+    <Resource Include="image\KH.jpg" />
+    <Resource Include="image\KS.jpg" />
+    <Resource Include="image\maxresdefault.jpg" />
+    <Resource Include="image\QC.jpg" />
+    <Resource Include="image\QD.jpg" />
+    <Resource Include="image\QH.jpg" />
+    <Resource Include="image\QS.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
