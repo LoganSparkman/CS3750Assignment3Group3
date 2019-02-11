@@ -11,7 +11,7 @@ namespace SlapJack
         /// <summary>
         /// cards player has
         /// </summary>
-        //Hand hand;
+        Hand hand;
 
         /// <summary>
         /// Did the player slap first?
@@ -26,26 +26,8 @@ namespace SlapJack
 
         public Player()
         {
-           // hand = new Hand();
+            hand = new Hand();
         }
-
-        /// <summary>
-        /// calculates the number of cards player has
-        /// </summary>
-        /*
-        public void GetNumCards()
-        {
-            numCards = 0;
-
-            foreach(Card card in hand)
-            {
-                if (card != null)
-                    numCards++;
-            }
-        }
-        */
-
-
 
     }
 }

@@ -54,17 +54,5 @@ namespace SlapJack
             }
         }
 
-        public Card[] random21()
-        {
-            int k = getrandom.Next(52);
-            Card[] Cards21 = new Card[21];
-            for (int i = 0; i < 21; i++)
-            {
-                Cards21[i] = cards[k];
-                k++;
-                if (k == 52) { k = 0; }
-            }
-            return Cards21;
-        }
     }
 }
