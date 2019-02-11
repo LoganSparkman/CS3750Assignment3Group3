@@ -11,6 +11,16 @@ namespace SlapJack
     class Computer
     {
         /// <summary>
+        /// The computers hand/cards
+        /// </summary>
+        Hand hand;
+
+        public Computer()
+        {
+            hand = new Hand();
+        }
+
+        /// <summary>
         /// time computer waits to slap
         /// </summary>
         /// <param name="sender"></param>
