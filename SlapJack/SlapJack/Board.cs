@@ -9,27 +9,38 @@ namespace SlapJack
     {
         public Card[] middlePile = new Card[52];
         int totalCards = 0;
+        static bool isAJack;
 
         public Board()
         {
-            Player player1 = new Player();
-            Player player2 = new Player();
-            Deck deck = new Deck();
-            deck.shuffle();
-            Deck.cards[0].getSuit();
-            Deck.cards[0].getface();
-            Hand hand1 = new Hand();
 
-            Card newcard = new Card(Deck.cards[0].getSuit(), Deck.cards[0].getface());
-
-            hand1.addCard(newcard);
-            Hand hand2 = new Hand();
         }
 
         public void addCard(Card card, Hand hand)
         {
             middlePile[totalCards] = card;
             totalCards++;
+        }
+
+        public void isJack(Card card)
+        {
+            if (card.getface() == "Jack")
+            {
+                isAJack = true;
+            }
+            else
+            {
+                isAJack = false;
+            }
+            Slap(isAJack);
+        }
+
+        public void Slap(bool isAJack)
+        {
+            if(true)
+            {
+
+            }
         }
 
     }
