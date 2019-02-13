@@ -8,8 +8,8 @@ namespace SlapJack
 {
     class Hand
     {
-        Card[] cards = new Card[52];
-        int totalCards = 0;
+        public Card[] cards = new Card[52];
+        public int totalCards = 0;
         public void addCard(Card newCard)
         {
             cards[totalCards] = newCard;

@@ -28,6 +28,8 @@ namespace SlapJack
 
         Computer computer;
 
+        Board board;
+
         Deck deck;
         /// <summary>
         /// Delays the computers slap then calls the slap method to see who slapped first
@@ -45,6 +47,7 @@ namespace SlapJack
             player = new Player();
             computer = new Computer();
             deck = new Deck();
+            board = new Board();
 
             //computer thread
             computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
@@ -60,8 +63,8 @@ namespace SlapJack
         {
             if (e.Key == Key.Space)
             {
-                //if can slap board
-                player.slappedFirst = true;
+                if (board.middlePile[board.totalCards].getface() == "Jack")
+                    player.slappedFirst = true;
 
             } //for testing
             else if (e.Key == Key.S)
@@ -114,6 +117,10 @@ namespace SlapJack
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
 
+                //If Jack start computer slap
+                if(temp.getface() == "Jack")
+                    computerSlapWorker.RunWorkerAsync();
+
                 numberOfCardsInPlayerHand--;
                 numberOfCardsInMiddle++;
 
@@ -129,6 +136,11 @@ namespace SlapJack
                 Card temp = computer.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
+
+                //If Jack start computer slap
+                if (temp.getface() == "Jack")
+                    computerSlapWorker.RunWorkerAsync();
+
                 numberOfCardsInComputerHand--;
                 numberOfCardsInMiddle++;
 

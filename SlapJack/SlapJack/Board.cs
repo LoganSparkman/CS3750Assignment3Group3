@@ -8,7 +8,7 @@ namespace SlapJack
     class Board
     {
         public Card[] middlePile = new Card[52];
-        int totalCards = 0;
+        public int totalCards = 0;
 
         public Board()
         {
