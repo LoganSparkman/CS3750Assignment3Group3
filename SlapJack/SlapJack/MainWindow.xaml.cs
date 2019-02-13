@@ -35,6 +35,7 @@ namespace SlapJack
         /// Delays the computers slap then calls the slap method to see who slapped first
         /// </summary>
         BackgroundWorker computerSlapWorker = new BackgroundWorker();
+        BitmapImage carbackImage = new BitmapImage(new Uri("image/cardback.jpg", UriKind.Relative));
 
         string currentStatus = "Before the game";
         int numberOfCardsInMiddle = 0;
@@ -116,9 +117,10 @@ namespace SlapJack
                 Card temp = player.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
+                BackImage.Source = carbackImage;
 
                 //If Jack start computer slap
-                if(temp.getface() == "Jack")
+                if (temp.getface() == "Jack")
                     computerSlapWorker.RunWorkerAsync();
 
                 numberOfCardsInPlayerHand--;
@@ -136,6 +138,7 @@ namespace SlapJack
                 Card temp = computer.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
+                BackImage.Source = carbackImage;
 
                 //If Jack start computer slap
                 if (temp.getface() == "Jack")

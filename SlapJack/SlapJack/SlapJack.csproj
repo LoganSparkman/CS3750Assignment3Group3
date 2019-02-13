@@ -100,7 +100,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="image\cardback.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="image\10C.jpg" />
     <Resource Include="image\10D.jpg" />
