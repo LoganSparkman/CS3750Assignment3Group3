@@ -61,7 +61,7 @@ namespace SlapJack
         /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.D)
             {
                 if (board.middlePile[board.totalCards].getface() == "Jack")
                     player.slappedFirst = true;

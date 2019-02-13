@@ -25,11 +25,11 @@ namespace SlapJack
             totalCards--;
             return returnCard;
         }
-        public void addHand(Hand newhand)
+        public void addHand(int totalCards, Card[] inputCards)
         {
-            for (int i = 0; i < newhand.totalCards; i++)
+            for (int i = 0; i < totalCards; i++)
             {
-                this.addCard(newhand.dealCard());
+                this.addCard(inputCards[i]);
             }
         }
         public void clear()
