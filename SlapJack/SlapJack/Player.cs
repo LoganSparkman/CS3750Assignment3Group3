@@ -11,7 +11,7 @@ namespace SlapJack
         /// <summary>
         /// cards player has
         /// </summary>
-        Hand hand;
+        public Hand hand;
 
         /// <summary>
         /// Did the player slap first?

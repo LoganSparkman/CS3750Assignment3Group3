@@ -13,7 +13,7 @@ namespace SlapJack
         /// <summary>
         /// The computers hand/cards
         /// </summary>
-        Hand hand;
+        public Hand hand;
 
         public Computer()
         {

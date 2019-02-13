@@ -12,6 +12,8 @@ namespace SlapJack
 
         public static Card[] cards = new Card[52];
 
+        public int dealingIndex = 0;
+
         public Deck()
         {
             for (int i = 0; i < 4; i++)
@@ -52,6 +54,12 @@ namespace SlapJack
                 cards[i] = cards[k];
                 cards[k] = temp;
             }
+        }
+
+        public Card deal()
+        {
+            dealingIndex++;
+            return cards[dealingIndex - 1];
         }
 
     }

@@ -11,20 +11,14 @@
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="551*"/>
-            <ColumnDefinition Width="241*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="START" HorizontalAlignment="Left" Margin="33,33,0,0" VerticalAlignment="Top" Width="75"/>
-        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
-        <Image HorizontalAlignment="Left" Height="141" Margin="465,105,0,0" VerticalAlignment="Top" Width="208" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+        <Button x:Name="btnMainButton" Content="START" HorizontalAlignment="Left" Margin="627,365,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click"/>
+        <Image x:Name="CardImage" HorizontalAlignment="Left" Height="238" Margin="308,84,0,0" VerticalAlignment="Top" Width="156"/>
+        <Label x:Name="lblNumberOfCardsInPile" Content="" HorizontalAlignment="Left" Margin="491,264,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPlayerCards" Content="" HorizontalAlignment="Left" Margin="479,367,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblComputerCards" Content="" HorizontalAlignment="Left" Margin="175,359,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblInstructions" Content="Hit the START button to deal cards and to start the game" HorizontalAlignment="Left" Margin="45,26,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
