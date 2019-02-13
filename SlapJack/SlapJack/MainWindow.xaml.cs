@@ -113,6 +113,7 @@ namespace SlapJack
                 Card temp = player.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
+
                 numberOfCardsInPlayerHand--;
                 numberOfCardsInMiddle++;
 

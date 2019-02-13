@@ -67,7 +67,7 @@ namespace SlapJack
                 tFace = face;
             }
 
-            image = "Images/" + tFace + suit[0] + ".jpg";
+            image = "image/" + tFace + suit[0] + ".jpg";
         }
 
 
