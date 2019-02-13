@@ -8,8 +8,8 @@ namespace SlapJack
 {
     class Hand
     {
-        Card[] cards = new Card[52];
-        int totalCards = 0;
+        public Card[] cards = new Card[52];
+        public int totalCards = 0;
         public void addCard(Card newCard)
         {
             cards[totalCards] = newCard;
@@ -25,11 +25,11 @@ namespace SlapJack
             totalCards--;
             return returnCard;
         }
-        public void addHand(Hand newhand)
+        public void addHand(int totalCards, Card[] inputCards)
         {
-            for (int i = 0; i < newhand.totalCards; i++)
+            for (int i = 0; i < totalCards; i++)
             {
-                this.addCard(newhand.dealCard());
+                this.addCard(inputCards[i]);
             }
         }
         public void clear()
