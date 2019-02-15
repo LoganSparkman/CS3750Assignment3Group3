@@ -85,8 +85,6 @@ namespace SlapJack
         /// <param name="e"></param>
         private void slapped(object sender, RunWorkerCompletedEventArgs e)
         {
-            //enable the button
-            btnMainButton.IsEnabled = true;
 
             if (player.slappedFirst)
             {
@@ -105,6 +103,7 @@ namespace SlapJack
 
             //clear the board
             board.clear();
+            CardImage.Source = null;
 
             //update labels
             lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
@@ -177,7 +176,6 @@ namespace SlapJack
             Card temp = computer.hand.dealCard();
             BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
             CardImage.Source = image;
-            BackImage.Source = carbackImage;
             board.addCard(temp);
 
             //If Jack start computer slap
@@ -185,14 +183,15 @@ namespace SlapJack
             {
                 computerSlapWorker.RunWorkerAsync();
             }
-            else
-                btnMainButton.IsEnabled = true;
 
             //if computer lost
             if (computer.hand.totalCards == 0)
             {
                 gameOver("You Win!");
             }
+
+            //enable the button
+            btnMainButton.IsEnabled = true;
 
         }
 
@@ -207,6 +206,7 @@ namespace SlapJack
             lblPlayerCards.Visibility = Visibility.Hidden;
             lblNumberOfCardsInPile.Visibility = Visibility.Hidden;
             btnMainButton.Visibility = Visibility.Hidden;
+            BackImage.Visibility = Visibility.Hidden;
 
             lblGameOver.Visibility = Visibility.Visible;
             lblGameOver.Content = s;
