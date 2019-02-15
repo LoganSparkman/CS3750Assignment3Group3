@@ -31,5 +31,17 @@ namespace SlapJack
             int waitTime = rnd.Next(300, 1000);
             Thread.Sleep(waitTime);
         }
+
+        /// <summary>
+        /// time computer waits to play a card
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void playWait(object sender, DoWorkEventArgs e)
+        {
+            Random rnd = new Random();
+            int waitTime = rnd.Next(1000, 2000);
+            Thread.Sleep(waitTime);
+        }
     }
 }

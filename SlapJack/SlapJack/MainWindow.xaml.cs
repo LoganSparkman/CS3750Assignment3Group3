@@ -35,12 +35,12 @@ namespace SlapJack
         /// Delays the computers slap then calls the slap method to see who slapped first
         /// </summary>
         BackgroundWorker computerSlapWorker = new BackgroundWorker();
+
+        BackgroundWorker computerPlayWorker = new BackgroundWorker();
+
         BitmapImage carbackImage = new BitmapImage(new Uri("image/cardback.jpg", UriKind.Relative));
 
         string currentStatus = "Before the game";
-        int numberOfCardsInMiddle = 0;
-        int numberOfCardsInPlayerHand = 26;
-        int numberOfCardsInComputerHand = 26;
 
         public MainWindow()
         {
@@ -50,9 +50,13 @@ namespace SlapJack
             deck = new Deck();
             board = new Board();
 
-            //computer thread
+            //computer slap thread
             computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
             computerSlapWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(slapped);
+
+            //computer play thread
+            computerPlayWorker.DoWork += new DoWorkEventHandler(computer.playWait);
+            computerPlayWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(computerPlaysCard);
         }
 
         /// <summary>
@@ -80,10 +84,16 @@ namespace SlapJack
         /// <param name="e"></param>
         private void slapped(object sender, RunWorkerCompletedEventArgs e)
         {
+            //enable the button
+            btnMainButton.IsEnabled = true;
+
             if (player.slappedFirst)
             {
                 //reset slappedFirst
                 player.slappedFirst = false;
+
+                //add the middle pile to players hand
+                player.hand.addHand(board.totalCards, board.middlePile);
 
                 //for testing
                 MessageBox.Show("player");
@@ -91,6 +101,9 @@ namespace SlapJack
             }
             else // computer slapped first
             {
+                //add the middle pile to computers hand
+                computer.hand.addHand(board.totalCards, board.middlePile);
+
                 //for testing
                 MessageBox.Show("PC");
             }
@@ -98,6 +111,11 @@ namespace SlapJack
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //update labels
+            lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
+            lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
+            lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
+
             if (currentStatus == "Before the game")
             {
                 deck.shuffle();
@@ -107,53 +125,82 @@ namespace SlapJack
                     computer.hand.addCard(deck.deal());
                 }
 
-                lblComputerCards.Content = "Computer has " + numberOfCardsInComputerHand + " cards.";
-                lblPlayerCards.Content = "Player has " + numberOfCardsInPlayerHand + " cards.";
-                lblNumberOfCardsInPile.Content = "There are " + numberOfCardsInMiddle + " cards on the table.";
-                currentStatus = "Player Turn";
+                //change from start to play card
+                btnMainButton.Content = "Play Card";
+
+                currentStatus = "Game";
             }
-            else if (currentStatus == "Player Turn")
+            else
             {
                 Card temp = player.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
                 BackImage.Source = carbackImage;
+                board.addCard(temp);
 
                 //If Jack start computer slap
                 if (temp.getface() == "Jack")
+                {
                     computerSlapWorker.RunWorkerAsync();
+                    btnMainButton.IsEnabled = false;
+                }
 
-                numberOfCardsInPlayerHand--;
-                numberOfCardsInMiddle++;
-
-                // TODO if jack, do something
-
-                lblComputerCards.Content = "Computer has " + numberOfCardsInComputerHand + " cards.";
-                lblPlayerCards.Content = "Player has " + numberOfCardsInPlayerHand + " cards.";
-                lblNumberOfCardsInPile.Content = "There are " + numberOfCardsInMiddle + " cards on the table.";
-                currentStatus = "Computer Turn";
+                btnMainButton.IsEnabled = false;
+                //computers turn
+                computerPlayWorker.RunWorkerAsync();
             }
-            else if (currentStatus == "Computer Turn")
+
+            //update labels
+            lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
+            lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
+            lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
+
+            /*else if (currentStatus == "Computer Turn")
             {
-                Card temp = computer.hand.dealCard();
+                Card temp = player.hand.dealCard();
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
                 BackImage.Source = carbackImage;
+                board.addCard(temp);
 
                 //If Jack start computer slap
                 if (temp.getface() == "Jack")
+                {
                     computerSlapWorker.RunWorkerAsync();
+                    btnMainButton.IsEnabled = false;
+                }
 
-                numberOfCardsInComputerHand--;
-                numberOfCardsInMiddle++;
 
-                // TODO if jack, do something
-
-                lblComputerCards.Content = "Computer has " + numberOfCardsInComputerHand + " cards.";
-                lblPlayerCards.Content = "Player has " + numberOfCardsInPlayerHand + " cards.";
-                lblNumberOfCardsInPile.Content = "There are " + numberOfCardsInMiddle + " cards on the table.";
+                lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
+                lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
+                lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
                 currentStatus = "Player Turn";
-            }
+            }*/
         }
+
+        /// <summary>
+        /// Computer plays card
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void computerPlaysCard(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Card temp = computer.hand.dealCard();
+            BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
+            CardImage.Source = image;
+            BackImage.Source = carbackImage;
+            board.addCard(temp);
+
+            //If Jack start computer slap
+            if (temp.getface() == "Jack")
+            {
+                computerSlapWorker.RunWorkerAsync();
+                btnMainButton.IsEnabled = false;
+            }
+            else
+                btnMainButton.IsEnabled = true;
+
+        }
+
     }
 }

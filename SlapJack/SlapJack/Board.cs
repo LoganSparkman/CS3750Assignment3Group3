@@ -16,7 +16,7 @@ namespace SlapJack
 
         }
 
-        public void addCard(Card card, Hand hand)
+        public void addCard(Card card) //, Hand hand??
         {
             middlePile[totalCards] = card;
             totalCards++;
