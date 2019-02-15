@@ -66,14 +66,15 @@ namespace SlapJack
         /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.D)
+            if (e.Key == Key.Space)
             {
-                if (board.middlePile[board.totalCards].getface() == "Jack")
-                    player.slappedFirst = true;
-
-            } //for testing
-            else if (e.Key == Key.S)
-                computerSlapWorker.RunWorkerAsync();
+                if (board.totalCards > 0)
+                {
+                    if (board.middlePile[board.totalCards - 1].getface() == "Jack")
+                        player.slappedFirst = true;
+                }
+   
+            }
 
         }
 
@@ -95,18 +96,20 @@ namespace SlapJack
                 //add the middle pile to players hand
                 player.hand.addHand(board.totalCards, board.middlePile);
 
-                //for testing
-                MessageBox.Show("player");
-
             }
             else // computer slapped first
             {
                 //add the middle pile to computers hand
                 computer.hand.addHand(board.totalCards, board.middlePile);
-
-                //for testing
-                MessageBox.Show("PC");
             }
+
+            //clear the board
+            board.clear();
+
+            //update labels
+            lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
+            lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
+            lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -133,16 +136,23 @@ namespace SlapJack
             else
             {
                 Card temp = player.hand.dealCard();
+                board.addCard(temp);
                 BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
                 CardImage.Source = image;
                 BackImage.Source = carbackImage;
-                board.addCard(temp);
+                
 
                 //If Jack start computer slap
                 if (temp.getface() == "Jack")
                 {
-                    computerSlapWorker.RunWorkerAsync();
                     btnMainButton.IsEnabled = false;
+                    computerSlapWorker.RunWorkerAsync();
+                }
+
+                //if player lost
+                if(player.hand.totalCards == 0)
+                {
+                    gameOver("You Lose");
                 }
 
                 btnMainButton.IsEnabled = false;
@@ -155,27 +165,6 @@ namespace SlapJack
             lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
             lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
 
-            /*else if (currentStatus == "Computer Turn")
-            {
-                Card temp = player.hand.dealCard();
-                BitmapImage image = new BitmapImage(new Uri(temp.getImage(), UriKind.Relative));
-                CardImage.Source = image;
-                BackImage.Source = carbackImage;
-                board.addCard(temp);
-
-                //If Jack start computer slap
-                if (temp.getface() == "Jack")
-                {
-                    computerSlapWorker.RunWorkerAsync();
-                    btnMainButton.IsEnabled = false;
-                }
-
-
-                lblComputerCards.Content = "Computer has " + computer.hand.totalCards + " cards.";
-                lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
-                lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
-                currentStatus = "Player Turn";
-            }*/
         }
 
         /// <summary>
@@ -195,11 +184,32 @@ namespace SlapJack
             if (temp.getface() == "Jack")
             {
                 computerSlapWorker.RunWorkerAsync();
-                btnMainButton.IsEnabled = false;
             }
             else
                 btnMainButton.IsEnabled = true;
 
+            //if computer lost
+            if (computer.hand.totalCards == 0)
+            {
+                gameOver("You Win!");
+            }
+
+        }
+
+        /// <summary>
+        /// What happens when the game ends
+        /// </summary>
+        public void gameOver(string s)
+        {
+            //hide everything
+            CardImage.Visibility = Visibility.Hidden;
+            lblComputerCards.Visibility = Visibility.Hidden;
+            lblPlayerCards.Visibility = Visibility.Hidden;
+            lblNumberOfCardsInPile.Visibility = Visibility.Hidden;
+            btnMainButton.Visibility = Visibility.Hidden;
+
+            lblGameOver.Visibility = Visibility.Visible;
+            lblGameOver.Content = s;
         }
 
     }
