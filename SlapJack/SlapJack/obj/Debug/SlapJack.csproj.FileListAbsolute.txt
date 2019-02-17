@@ -43,3 +43,4 @@ C:\Users\Logan Sparkman\Documents\CS3280_C#\CS3750Assignment3Group3\SlapJack\Sla
 C:\Users\Logan Sparkman\Documents\CS3280_C#\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.csproj.CoreCompileInputs.cache
 C:\Users\Logan Sparkman\Documents\CS3280_C#\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.exe
 C:\Users\Logan Sparkman\Documents\CS3280_C#\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack.pdb
+C:\dev\CS3750Assignment3Group3\SlapJack\SlapJack\obj\Debug\SlapJack_Content.g.cs

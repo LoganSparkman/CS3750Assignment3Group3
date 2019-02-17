@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/cardback.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/boo.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/slap.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/applause.wav")]
 
 

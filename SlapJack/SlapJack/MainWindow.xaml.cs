@@ -39,7 +39,9 @@ namespace SlapJack
         BackgroundWorker computerPlayWorker = new BackgroundWorker();
 
         BitmapImage carbackImage = new BitmapImage(new Uri("image/cardback.jpg", UriKind.Relative));
-
+        System.Media.SoundPlayer slapSound = new System.Media.SoundPlayer(@"image/slap.wav");
+        System.Media.SoundPlayer applauseSound = new System.Media.SoundPlayer(@"image/applause.wav");
+        System.Media.SoundPlayer booSound = new System.Media.SoundPlayer(@"image/boo.wav");
         string currentStatus = "Before the game";
 
         public MainWindow()
@@ -60,7 +62,7 @@ namespace SlapJack
         }
 
         /// <summary>
-        /// For when the play hits space to slap
+        /// For when the player hits space to slap
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -68,6 +70,7 @@ namespace SlapJack
         {
             if (e.Key == Key.Space)
             {
+                slapSound.Play();
                 if (board.totalCards > 0)
                 {
                     if (board.middlePile[board.totalCards - 1].getface() == "Jack")
@@ -210,6 +213,24 @@ namespace SlapJack
 
             lblGameOver.Visibility = Visibility.Visible;
             lblGameOver.Content = s;
+
+            if(s == "You Win!")
+            {
+                applauseSound.Play();
+            }
+
+            else
+            {
+                booSound.Play();
+            }
+        }
+
+        /// <summary>
+        /// what happens when a there is a slap
+        /// </summary>
+        public void whoSlapped(string s)
+        {
+
         }
 
     }

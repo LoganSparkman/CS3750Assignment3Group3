@@ -160,5 +160,10 @@
     <Resource Include="image\QH.jpg" />
     <Resource Include="image\QS.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="image\boo.wav" />
+    <Content Include="image\slap.wav" />
+    <Content Include="image\applause.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
