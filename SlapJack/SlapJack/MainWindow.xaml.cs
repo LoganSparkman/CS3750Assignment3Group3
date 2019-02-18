@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
+using System.IO;
 
 namespace SlapJack
 {
@@ -39,9 +41,13 @@ namespace SlapJack
         BackgroundWorker computerPlayWorker = new BackgroundWorker();
 
         BitmapImage carbackImage = new BitmapImage(new Uri("image/cardback.jpg", UriKind.Relative));
-        System.Media.SoundPlayer slapSound = new System.Media.SoundPlayer(@"image/slap.wav");
-        System.Media.SoundPlayer applauseSound = new System.Media.SoundPlayer(@"image/applause.wav");
-        System.Media.SoundPlayer booSound = new System.Media.SoundPlayer(@"image/boo.wav");
+        
+        //loading sound files
+
+        SoundPlayer slapSound = new SoundPlayer(Properties.Resources.slap);
+        SoundPlayer booSound = new SoundPlayer(Properties.Resources.boo);
+        SoundPlayer applauseSound = new SoundPlayer(Properties.Resources.applause);
+
         string currentStatus = "Before the game";
 
         public MainWindow()
