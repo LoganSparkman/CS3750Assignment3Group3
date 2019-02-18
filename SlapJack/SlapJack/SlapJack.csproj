@@ -164,6 +164,7 @@
     <Content Include="image\boo.wav" />
     <Content Include="image\slap.wav" />
     <Content Include="image\applause.wav" />
+    <None Include="image\slap1.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
