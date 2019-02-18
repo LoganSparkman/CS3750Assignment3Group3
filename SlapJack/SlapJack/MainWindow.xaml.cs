@@ -57,6 +57,8 @@ namespace SlapJack
             computer = new Computer();
             deck = new Deck();
             board = new Board();
+            lblSlap.Visibility = Visibility.Hidden;
+            lblGameOver.Visibility = Visibility.Hidden;
 
             //computer slap thread
             computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
@@ -80,7 +82,11 @@ namespace SlapJack
                 if (board.totalCards > 0)
                 {
                     if (board.middlePile[board.totalCards - 1].getface() == "Jack")
+                    {
                         player.slappedFirst = true;
+
+                    }
+
                 }
    
             }
@@ -100,12 +106,14 @@ namespace SlapJack
                 //reset slappedFirst
                 player.slappedFirst = false;
 
+                whoSlapped("You slapped first!");
                 //add the middle pile to players hand
                 player.hand.addHand(board.totalCards, board.middlePile);
 
             }
             else // computer slapped first
             {
+                whoSlapped("You did not slap first!");
                 //add the middle pile to computers hand
                 computer.hand.addHand(board.totalCards, board.middlePile);
             }
@@ -236,6 +244,27 @@ namespace SlapJack
         /// </summary>
         public void whoSlapped(string s)
         {
+            //hide everything
+            CardImage.Visibility = Visibility.Hidden;
+            lblComputerCards.Visibility = Visibility.Hidden;
+            lblPlayerCards.Visibility = Visibility.Hidden;
+            lblNumberOfCardsInPile.Visibility = Visibility.Hidden;
+            btnMainButton.Visibility = Visibility.Hidden;
+            BackImage.Visibility = Visibility.Hidden;
+
+            lblSlap.Visibility = Visibility.Visible;
+            lblSlap.Content = s;
+            System.Threading.Thread.Sleep(2000);
+            lblSlap.Visibility = Visibility.Hidden;
+
+            //show everything
+            CardImage.Visibility = Visibility.Visible;
+            lblComputerCards.Visibility = Visibility.Visible;
+            lblPlayerCards.Visibility = Visibility.Hidden;
+            lblNumberOfCardsInPile.Visibility = Visibility.Visible;
+            btnMainButton.Visibility = Visibility.Visible;
+            BackImage.Visibility = Visibility.Visible;
+
 
         }
 

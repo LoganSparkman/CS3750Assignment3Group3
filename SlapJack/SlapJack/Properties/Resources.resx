@@ -127,7 +127,4 @@
   <data name="slap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\slap.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="slap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\slap1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>
