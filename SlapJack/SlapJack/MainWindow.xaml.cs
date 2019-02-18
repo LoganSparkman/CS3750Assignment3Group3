@@ -220,7 +220,7 @@ namespace SlapJack
             lblGameOver.Visibility = Visibility.Visible;
             lblGameOver.Content = s;
 
-            if(s == "You Win!")
+            if(s.Equals("You Win!"))
             {
                 applauseSound.Play();
             }

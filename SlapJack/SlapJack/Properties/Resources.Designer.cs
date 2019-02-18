@@ -86,14 +86,5 @@ namespace SlapJack.Properties {
                 return ResourceManager.GetStream("slap", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream slap1 {
-            get {
-                return ResourceManager.GetStream("slap1", resourceCulture);
-            }
-        }
     }
 }
