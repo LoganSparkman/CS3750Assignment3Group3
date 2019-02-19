@@ -61,7 +61,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowFrameColorKey}}"/>
             </Label.Background>
         </Label>
-        <Label x:Name="lblSlap" Content="" HorizontalAlignment="Left" Margin="249,177,0,0" VerticalAlignment="Top" FontSize="35" Width="317" Foreground="White">
+        <Label x:Name="lblSlap" Content="" HorizontalAlignment="Left" Margin="249,177,0,0" VerticalAlignment="Top" FontSize="35" Width="370" Foreground="White">
             <Label.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowFrameColorKey}}"/>
             </Label.Background>

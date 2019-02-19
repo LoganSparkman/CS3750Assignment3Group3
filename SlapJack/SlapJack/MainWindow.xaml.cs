@@ -28,27 +28,47 @@ namespace SlapJack
         /// </summary>
         Player player;
 
+        /// <summary>
+        /// the computer player
+        /// </summary>
         Computer computer;
 
+        /// <summary>
+        /// the board
+        /// </summary>
         Board board;
 
+        /// <summary>
+        /// the deck
+        /// </summary>
         Deck deck;
         /// <summary>
         /// Delays the computers slap then calls the slap method to see who slapped first
         /// </summary>
         BackgroundWorker computerSlapWorker = new BackgroundWorker();
 
+        /// <summary>
+        /// waits a random time before playing the computers card to simulate a real person
+        /// </summary>
         BackgroundWorker computerPlayWorker = new BackgroundWorker();
 
+        /// <summary>
+        /// pauses the ui for 2 seconds to display winner of the slap
+        /// </summary>
+        BackgroundWorker boardWaitWorker = new BackgroundWorker();
+
+        /// <summary>
+        /// image of the back of a card
+        /// </summary>
         BitmapImage carbackImage = new BitmapImage(new Uri("image/cardback.jpg", UriKind.Relative));
         
         //loading sound files
-
         SoundPlayer slapSound = new SoundPlayer(Properties.Resources.slap);
         SoundPlayer booSound = new SoundPlayer(Properties.Resources.boo);
         SoundPlayer applauseSound = new SoundPlayer(Properties.Resources.applause);
 
-        string currentStatus = "Before the game";
+        //string currentStatus = "Before the game";
+        bool beforeGame = true;
 
         public MainWindow()
         {
@@ -57,8 +77,13 @@ namespace SlapJack
             computer = new Computer();
             deck = new Deck();
             board = new Board();
+
+            //hide labels
             lblSlap.Visibility = Visibility.Hidden;
             lblGameOver.Visibility = Visibility.Hidden;
+            lblComputerCards.Visibility = Visibility.Hidden;
+            lblPlayerCards.Visibility = Visibility.Hidden;
+            lblNumberOfCardsInPile.Visibility = Visibility.Hidden;
 
             //computer slap thread
             computerSlapWorker.DoWork += new DoWorkEventHandler(computer.slap);
@@ -67,6 +92,10 @@ namespace SlapJack
             //computer play thread
             computerPlayWorker.DoWork += new DoWorkEventHandler(computer.playWait);
             computerPlayWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(computerPlaysCard);
+
+            //board wait thread
+            boardWaitWorker.DoWork += new DoWorkEventHandler(board.wait);
+            boardWaitWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(showBoard);
         }
 
         /// <summary>
@@ -113,7 +142,7 @@ namespace SlapJack
             }
             else // computer slapped first
             {
-                whoSlapped("You did not slap first!");
+                whoSlapped("Computer slapped first");
                 //add the middle pile to computers hand
                 computer.hand.addHand(board.totalCards, board.middlePile);
             }
@@ -135,7 +164,7 @@ namespace SlapJack
             lblPlayerCards.Content = "Player has " + player.hand.totalCards + " cards.";
             lblNumberOfCardsInPile.Content = "There are " + board.totalCards + " cards on the table.";
 
-            if (currentStatus == "Before the game")
+            if (beforeGame)
             {
                 deck.shuffle();
                 for (int i = 0; i < 26; i++)
@@ -147,7 +176,12 @@ namespace SlapJack
                 //change from start to play card
                 btnMainButton.Content = "Play Card";
 
-                currentStatus = "Game";
+                lblComputerCards.Visibility = Visibility.Visible;
+                lblPlayerCards.Visibility = Visibility.Visible;
+                lblNumberOfCardsInPile.Visibility = Visibility.Visible;
+
+                
+                beforeGame = false;
             }
             else
             {
@@ -254,19 +288,21 @@ namespace SlapJack
 
             lblSlap.Visibility = Visibility.Visible;
             lblSlap.Content = s;
-            System.Threading.Thread.Sleep(2000);
-            lblSlap.Visibility = Visibility.Hidden;
+            boardWaitWorker.RunWorkerAsync();
+        }
 
-            //show everything
+        /// <summary>
+        /// show everything but lblslap, after showing who won the slap
+        /// </summary>
+        public void showBoard(object sender, RunWorkerCompletedEventArgs e)
+        {
             CardImage.Visibility = Visibility.Visible;
             lblComputerCards.Visibility = Visibility.Visible;
-            lblPlayerCards.Visibility = Visibility.Hidden;
+            lblPlayerCards.Visibility = Visibility.Visible;
             lblNumberOfCardsInPile.Visibility = Visibility.Visible;
             btnMainButton.Visibility = Visibility.Visible;
             BackImage.Visibility = Visibility.Visible;
-
-
+            lblSlap.Visibility = Visibility.Hidden;
         }
-
     }
 }

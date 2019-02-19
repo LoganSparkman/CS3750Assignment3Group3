@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace SlapJack
 {
     class Computer
     {
+
+        SoundPlayer slapSound = new SoundPlayer(Properties.Resources.slap);
+
         /// <summary>
         /// The computers hand/cards
         /// </summary>
@@ -30,6 +34,11 @@ namespace SlapJack
             Random rnd = new Random();
             int waitTime = rnd.Next(300, 1000);
             Thread.Sleep(waitTime);
+
+            //slap sound
+            slapSound.Play();
+            Thread.Sleep(200); //to look more natural
+
         }
 
         /// <summary>
