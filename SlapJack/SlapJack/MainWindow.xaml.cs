@@ -69,6 +69,7 @@ namespace SlapJack
 
         //string currentStatus = "Before the game";
         bool beforeGame = true;
+        bool gameover = false;
 
         public MainWindow()
         {
@@ -251,6 +252,7 @@ namespace SlapJack
         /// </summary>
         public void gameOver(string s)
         {
+            gameover = true;
             //hide everything
             CardImage.Visibility = Visibility.Hidden;
             lblComputerCards.Visibility = Visibility.Hidden;
@@ -296,13 +298,16 @@ namespace SlapJack
         /// </summary>
         public void showBoard(object sender, RunWorkerCompletedEventArgs e)
         {
-            CardImage.Visibility = Visibility.Visible;
-            lblComputerCards.Visibility = Visibility.Visible;
-            lblPlayerCards.Visibility = Visibility.Visible;
-            lblNumberOfCardsInPile.Visibility = Visibility.Visible;
-            btnMainButton.Visibility = Visibility.Visible;
-            BackImage.Visibility = Visibility.Visible;
-            lblSlap.Visibility = Visibility.Hidden;
+            if (!gameover)
+            {
+                CardImage.Visibility = Visibility.Visible;
+                lblComputerCards.Visibility = Visibility.Visible;
+                lblPlayerCards.Visibility = Visibility.Visible;
+                lblNumberOfCardsInPile.Visibility = Visibility.Visible;
+                btnMainButton.Visibility = Visibility.Visible;
+                BackImage.Visibility = Visibility.Visible;
+                lblSlap.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
